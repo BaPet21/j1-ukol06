@@ -6,8 +6,25 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class Aplikace extends JFrame {
+
+    private JLabel husyLabel;
+    private JLabel kraliciLabel;
+
+    private JLabel pocetHlavLabel;
+    private JLabel pocetNohouLabel;
+
+
+    private JTextField husyField;
+    private JTextField kraliciField;
+    private JTextField pocetHlavField;
+    private JTextField pocetNohouField;
+    private JButton vypocitatButton;
+
+    private JSpinner husySpinner;
+    private JSpinner kraliciSpinner;
 
     public static void main(String[] args) {
         FlatLightLaf.setup();
@@ -31,8 +48,131 @@ public class Aplikace extends JFrame {
         setMinimumSize(new Dimension(250, 200));
 
         //TODO implementovat formulář podle zadání
+        /*husyField = new JTextField();
+        husyLabel = new JLabel("Husy");
+        husyLabel.setDisplayedMnemonic('H');
+        add(husyLabel);
+        add(husyField);
+
+        kraliciField = new JTextField();
+       kraliciLabel = new JLabel("Králíci");
+        kraliciLabel.setDisplayedMnemonic('K');
+        add(kraliciLabel);
+        add(kraliciField);*/
+
+        husySpinner = new JSpinner();
+        husyLabel = new JLabel("Husy");
+        husyLabel.setDisplayedMnemonic('H');
+        add(husyLabel);
+        add (husySpinner);
+
+
+        kraliciSpinner = new JSpinner();
+        kraliciLabel = new JLabel("Králíci");
+        kraliciLabel.setDisplayedMnemonic('K');
+        add(kraliciLabel);
+        add (kraliciSpinner);
+
+        vypocitatButton=new JButton("Vypočítej");
+        vypocitatButton.setMnemonic('V');
+        add(vypocitatButton,"right,span");
+
+
+        pocetHlavField = new JTextField();
+        pocetHlavLabel = new JLabel("Počet hlav");
+        pocetHlavLabel.setDisplayedMnemonic('P');
+        add(pocetHlavLabel);
+        add(pocetHlavField);
+       pocetHlavField.setEditable(false);
+           isEnabled();
+
+        pocetNohouField = new JTextField();
+        pocetNohouLabel = new JLabel("Počet nohou");
+        pocetNohouLabel.setDisplayedMnemonic('N');
+        add(pocetNohouLabel);
+        add(pocetNohouField);
+        pocetNohouField.setEditable(false);
 
         pack();
+        vypocitatButton.addActionListener(this::vypocetHlav);
+        vypocitatButton.addActionListener(this::vypocetNoh);
     }
 
+
+    public JTextField getHusyField() {
+        return husyField;
+    }
+
+    public void setHusyField(JTextField husyField) {
+        this.husyField = husyField;
+    }
+
+    public JTextField getKraliciField() {
+        return kraliciField;
+    }
+
+    public void setKraliciField(JTextField kraliciField) {
+        this.kraliciField = kraliciField;
+    }
+
+    /*private int vypocetHlav(){
+    getHusyField();
+    getKraliciField();
+
+        String husyField =;
+        int pocetHus = Integer.parseInt(husyField);
+
+        String Kralici= String.valueOf(kraliciField);
+        int pocetKraliku = Integer.parseInt(Kralici);
+
+    int pocetHlav= pocetHus+pocetKraliku;
+    return pocetHlav;
+
+        //String  pocetHlav= Integer.toString(cislo2);
+
+    }
+
+    private int vypocetNoh(){
+        getHusyField();
+        getKraliciField();
+
+        String husyField= ,
+        int pocetHus = Integer.parseInt(husyField);
+
+        String kraliciField= ,
+        int pocetKraliku = Integer.parseInt(kraliciField);
+
+
+        int vypocetNohHus = pocetHus*2;
+        return vypocetNohHus;
+        int vypocetNohKraliku = pocetKraliku+4;
+        return vypocetNohKraliku;
+
+         int vypocetNoh=vypocetNohHus+vypocetNohKraliku;
+         return vypocetNoh;
+
+
+    }*/
+    private  vypocetHlav(JSpinner spinner){
+        int pocetHus = (Integer) spinner.getValue();
+        int pocetKraliku= (Integer) spinner.getValue();
+
+        int vypocetHlav= pocetHus+pocetKraliku;
+        return vypocetHlav;
+
+    }
+    private int vypocetNoh(JSpinner spinner) {
+        int pocetHus = (Integer) spinner.getValue();
+        int pocetKraliku= (Integer) spinner.getValue();
+
+
+        int vypocetNohHus = pocetHus * 2;
+        return vypocetNohHus;
+
+        //int vypocetNohKraliku= pocetKraliku * 4;
+       // return vypocetNohKraliku;
+
+        //int vypocetNoh = vypocetNohHus + vypocetNohKraliku;
+       // return vypocetNoh;
+    }
 }
