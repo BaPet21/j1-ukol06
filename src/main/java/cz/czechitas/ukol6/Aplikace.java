@@ -60,18 +60,18 @@ public class Aplikace extends JFrame {
         add(kraliciLabel);
         add(kraliciField);*/
 
-        husySpinner = new JSpinner();
+        husySpinner = new JSpinner( new SpinnerNumberModel(0,0,1000,1));
         husyLabel = new JLabel("Husy");
         husyLabel.setDisplayedMnemonic('H');
         add(husyLabel);
-        add (husySpinner);
+        add(husySpinner);
 
 
-        kraliciSpinner = new JSpinner();
+        kraliciSpinner = new JSpinner ( new SpinnerNumberModel(0,0,1000,1));
         kraliciLabel = new JLabel("Králíci");
         kraliciLabel.setDisplayedMnemonic('K');
         add(kraliciLabel);
-        add (kraliciSpinner);
+        add(kraliciSpinner);
 
         vypocitatButton=new JButton("Vypočítej");
         vypocitatButton.setMnemonic('V');
@@ -86,12 +86,15 @@ public class Aplikace extends JFrame {
        pocetHlavField.setEditable(false);
            isEnabled();
 
+           pocetHlavField.setText(vypocetHlav());
+
         pocetNohouField = new JTextField();
         pocetNohouLabel = new JLabel("Počet nohou");
         pocetNohouLabel.setDisplayedMnemonic('N');
         add(pocetNohouLabel);
         add(pocetNohouField);
         pocetNohouField.setEditable(false);
+        pocetNohouField.setText(vypocetNoh());
 
         pack();
         vypocitatButton.addActionListener(this::vypocetHlav);
@@ -115,64 +118,23 @@ public class Aplikace extends JFrame {
         this.kraliciField = kraliciField;
     }
 
-    /*private int vypocetHlav(){
-    getHusyField();
-    getKraliciField();
 
-        String husyField =;
-        int pocetHus = Integer.parseInt(husyField);
+    private void vypocetHlav(ActionEvent ActionEvent) {
+        int husy = (int) husySpinner.getValue();
+        int kralici = (int) kraliciSpinner.getValue();
 
-        String Kralici= String.valueOf(kraliciField);
-        int pocetKraliku = Integer.parseInt(Kralici);
-
-    int pocetHlav= pocetHus+pocetKraliku;
-    return pocetHlav;
-
-        //String  pocetHlav= Integer.toString(cislo2);
-
+        int vypocetHlav = husy + kralici;
+        System.out.println(vypocetHlav);
     }
 
-    private int vypocetNoh(){
-        getHusyField();
-        getKraliciField();
+        private void vypocetNoh(ActionEvent ActionEvent) {
+            int husy = (int) husySpinner.getValue();
+            int kralici= (int) kraliciSpinner.getValue();
+        int vypocetNohHus = husy * 2;
 
-        String husyField= ,
-        int pocetHus = Integer.parseInt(husyField);
+        int vypocetNohKraliku = kralici * 4;
 
-        String kraliciField= ,
-        int pocetKraliku = Integer.parseInt(kraliciField);
-
-
-        int vypocetNohHus = pocetHus*2;
-        return vypocetNohHus;
-        int vypocetNohKraliku = pocetKraliku+4;
-        return vypocetNohKraliku;
-
-         int vypocetNoh=vypocetNohHus+vypocetNohKraliku;
-         return vypocetNoh;
-
-
-    }*/
-    private  vypocetHlav(JSpinner spinner){
-        int pocetHus = (Integer) spinner.getValue();
-        int pocetKraliku= (Integer) spinner.getValue();
-
-        int vypocetHlav= pocetHus+pocetKraliku;
-        return vypocetHlav;
-
-    }
-    private int vypocetNoh(JSpinner spinner) {
-        int pocetHus = (Integer) spinner.getValue();
-        int pocetKraliku= (Integer) spinner.getValue();
-
-
-        int vypocetNohHus = pocetHus * 2;
-        return vypocetNohHus;
-
-        //int vypocetNohKraliku= pocetKraliku * 4;
-       // return vypocetNohKraliku;
-
-        //int vypocetNoh = vypocetNohHus + vypocetNohKraliku;
-       // return vypocetNoh;
+        int vypocetNoh = vypocetNohHus + vypocetNohKraliku;
+        System.out.println (vypocetNoh);
     }
 }
