@@ -83,10 +83,10 @@ public class Aplikace extends JFrame {
         pocetHlavLabel.setDisplayedMnemonic('P');
         add(pocetHlavLabel);
         add(pocetHlavField);
-       pocetHlavField.setEditable(false);
-           isEnabled();
+       //pocetHlavField.setEditable(false);
+           //isEnabled();
 
-           pocetHlavField.setText(vypocetHlav());
+       pocetHlavField.setText();
 
         pocetNohouField = new JTextField();
         pocetNohouLabel = new JLabel("Počet nohou");
@@ -94,11 +94,13 @@ public class Aplikace extends JFrame {
         add(pocetNohouLabel);
         add(pocetNohouField);
         pocetNohouField.setEditable(false);
-        pocetNohouField.setText(vypocetNoh());
+
+        pocetNohouField.setText();
 
         pack();
         vypocitatButton.addActionListener(this::vypocetHlav);
         vypocitatButton.addActionListener(this::vypocetNoh);
+
     }
 
 
@@ -125,6 +127,10 @@ public class Aplikace extends JFrame {
 
         int vypocetHlav = husy + kralici;
         System.out.println(vypocetHlav);
+        String pocetHlav = String.valueOf(vypocetHlav);
+        String pocetHlav2 = Integer.toString(vypocetHlav);
+
+
     }
 
         private void vypocetNoh(ActionEvent ActionEvent) {
