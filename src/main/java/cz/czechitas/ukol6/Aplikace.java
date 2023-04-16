@@ -48,17 +48,6 @@ public class Aplikace extends JFrame {
         setMinimumSize(new Dimension(250, 200));
 
         //TODO implementovat formulář podle zadání
-        /*husyField = new JTextField();
-        husyLabel = new JLabel("Husy");
-        husyLabel.setDisplayedMnemonic('H');
-        add(husyLabel);
-        add(husyField);
-
-        kraliciField = new JTextField();
-       kraliciLabel = new JLabel("Králíci");
-        kraliciLabel.setDisplayedMnemonic('K');
-        add(kraliciLabel);
-        add(kraliciField);*/
 
         husySpinner = new JSpinner( new SpinnerNumberModel(0,0,1000,1));
         husyLabel = new JLabel("Husy");
@@ -83,10 +72,9 @@ public class Aplikace extends JFrame {
         pocetHlavLabel.setDisplayedMnemonic('P');
         add(pocetHlavLabel);
         add(pocetHlavField);
-       //pocetHlavField.setEditable(false);
+       pocetHlavField.setEditable(false);
            //isEnabled();
 
-       pocetHlavField.setText();
 
         pocetNohouField = new JTextField();
         pocetNohouLabel = new JLabel("Počet nohou");
@@ -95,7 +83,7 @@ public class Aplikace extends JFrame {
         add(pocetNohouField);
         pocetNohouField.setEditable(false);
 
-        pocetNohouField.setText();
+
 
         pack();
         vypocitatButton.addActionListener(this::vypocetHlav);
@@ -127,8 +115,10 @@ public class Aplikace extends JFrame {
 
         int vypocetHlav = husy + kralici;
         System.out.println(vypocetHlav);
+
         String pocetHlav = String.valueOf(vypocetHlav);
-        String pocetHlav2 = Integer.toString(vypocetHlav);
+        //String pocetHlav2 = Integer.toString(vypocetHlav);
+        pocetHlavField.setText(pocetHlav);
 
 
     }
@@ -141,6 +131,10 @@ public class Aplikace extends JFrame {
         int vypocetNohKraliku = kralici * 4;
 
         int vypocetNoh = vypocetNohHus + vypocetNohKraliku;
-        System.out.println (vypocetNoh);
-    }
+        System.out.println(vypocetNoh);
+
+        String pocetNoh = String.valueOf(vypocetNoh);
+        pocetNohouField.setText(pocetNoh);
+
+        }
 }
